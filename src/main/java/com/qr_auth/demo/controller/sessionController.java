@@ -17,7 +17,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "api/v1/qr_auth/sessions")
-public classessionController {
+public class sessionController {
 
     private final sessionCoursRepository sessionCoursRepo;
     private final scanUserRepository scanUserRepository;
