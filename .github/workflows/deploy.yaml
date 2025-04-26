@@ -3,7 +3,7 @@ name: Deploy Spring Boot app to Railway
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
