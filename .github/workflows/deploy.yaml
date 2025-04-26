@@ -1,4 +1,4 @@
-name: Deploy Spring Boot app to Railway
+name: Deploy to Railway
 
 on:
   push:
@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up JDK
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17' # ou 21 selon ta version
+          java-version: '17'
 
-      - name: Build the application
-        run: ./mvnw clean package -DskipTests
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
 
       - name: Deploy to Railway
-        uses: railwayapp/cli-action@v1
-        with:
-          railwayToken: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
